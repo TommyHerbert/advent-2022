@@ -17,5 +17,6 @@ def solve_part_b(filename):
                 elves.append(0)
             else:
                 elves[-1] += int(line.strip())
-    return max(elves)
+    elves.sort()
+    return sum(elves[:3])
 
