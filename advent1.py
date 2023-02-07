@@ -18,5 +18,5 @@ def solve_part_b(filename):
             else:
                 elves[-1] += int(line.strip())
     elves.sort()
-    return sum(elves[:3])
+    return sum(elves[-3:])
 
