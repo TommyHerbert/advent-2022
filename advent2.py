@@ -1,15 +1,12 @@
 import utils
 
 scores = {
-    'A X\n': 4, 'A Y\n': 1, 'A Z\n': 7,
-    'B X\n': 8, 'B Y\n': 5, 'B Z\n': 2,
-    'C X\n': 3, 'C Y\n': 9, 'C Z\n': 6
+    'A X\n': 4, 'A Y\n': 8, 'A Z\n': 3,
+    'B X\n': 1, 'B Y\n': 5, 'B Z\n': 9,
+    'C X\n': 7, 'C Y\n': 2, 'C Z\n': 6
 }
 
 
 def solve_part_a(path):
-    score = 0
-    for line in utils.get_lines(path):
-        score += scores[line]
-    return score
+    return sum([scores[line] for line in utils.get_lines(path)])
 
