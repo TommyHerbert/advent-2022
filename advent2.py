@@ -1,3 +1,7 @@
+import utils
+
+
 def solve_part_a(path):
-    pass
+    lines = utils.get_lines(path)
+    return 0 # TODO
 
