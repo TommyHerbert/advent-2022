@@ -8,6 +8,9 @@ class TestStringMethods(unittest.TestCase):
     def test_1a_input(self):
         self.assertEqual(advent1.solve_part_a('input/input1.txt'), 66306)
 
+    def test_1b_example(self):
+        self.assertEqual(advent1.solve_part_b('input/example1.txt'), 45000)
+
     def test_1b_input(self):
         self.assertEqual(advent1.solve_part_b('input/input1.txt'), 195292)
 
