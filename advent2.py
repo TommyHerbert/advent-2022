@@ -8,6 +8,8 @@ scores = {
 
 
 def solve_part_a(path):
-    lines = utils.get_lines(path)
-    return 0 # TODO
+    score = 0
+    for line in utils.get_lines(path):
+        score += scores[line]
+    return score
 
