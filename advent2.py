@@ -10,3 +10,7 @@ scores = {
 def solve_part_a(path):
     return sum([scores[line] for line in utils.get_lines(path)])
 
+
+def solve_part_b(path):
+    return 0 # TODO
+
