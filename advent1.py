@@ -1,4 +1,4 @@
-def solve(filename):
+def solve_part_a(filename):
     elves = [0]
     with open(filename) as input:
         for line in input.readlines():
