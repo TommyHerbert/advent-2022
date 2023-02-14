@@ -12,7 +12,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(advent2.solve_part_a('input/example2.txt'), 15)
         self.assertEqual(advent2.solve_part_a('input/input2.txt'), 15422)
         self.assertEqual(advent2.solve_part_b('input/example2.txt'), 12)
-        #self.assertEqual(advent2.solve_part_b('input/input2.txt'), XXX)
+        self.assertEqual(advent2.solve_part_b('input/input2.txt'), 15442)
 
 
 if __name__ == '__main__':
