@@ -14,9 +14,13 @@ scores_b = {
 
 
 def solve_part_a(path):
-    return sum([scores_a[line] for line in utils.get_lines(path)])
+    return add_scores(path, scores_a)
 
 
 def solve_part_b(path):
-    return sum([scores_b[line] for line in utils.get_lines(path)])
+    return add_scores(path, scores_b)
+
+
+def add_scores(path, score_table):
+    return sum([score_table[line] for line in utils.get_lines(path)])
 
