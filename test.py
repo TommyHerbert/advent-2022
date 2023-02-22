@@ -1,4 +1,4 @@
-import unittest, day1, day2
+import unittest, day1, day2, day3
 
 
 class TestStringMethods(unittest.TestCase):
