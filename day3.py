@@ -7,7 +7,6 @@ def solve_part_a(path):
 
 def get_priority(line):
     halfway = int(len(line.strip())/2)
-    print(halfway)
     first_half = {c for c in line[:halfway]}
     for c in line[halfway:]:
         if c in first_half:
@@ -17,7 +16,7 @@ def get_priority(line):
 
 def value(character):
     if character.islower():
-        return ord(character) - 60
+        return ord(character) - 96
     else:
-        return ord(character) - 14
+        return ord(character) - 38
 
