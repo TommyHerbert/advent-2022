@@ -20,9 +20,9 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(day3.solve_part_b('input/example3.txt'), 70)
         self.assertEqual(day3.solve_part_b('input/input3.txt'), 2631)
 
-
     def test_day_4(self):
         self.assertEqual(day4.solve_part_a('input/example4.txt'), 2)
+        self.assertEqual(day4.solve_part_a('input/input4.txt'), 511)
 
 
 if __name__ == '__main__':
