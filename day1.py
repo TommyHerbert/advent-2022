@@ -1,4 +1,4 @@
-import utils
+from utils import get_lines
 
 
 def solve_part_a(path):
@@ -13,7 +13,7 @@ def solve_part_b(path):
 
 def get_elves(path):
     elves = [0]
-    for line in utils.get_lines(path):
+    for line in get_lines(path):
         if line == '\n':
             elves.append(0)
         else:

@@ -1,4 +1,4 @@
-import utils
+from utils import get_lines
 
 scores_a = {
     'A X\n': 4, 'A Y\n': 8, 'A Z\n': 3,
@@ -22,5 +22,5 @@ def solve_part_b(path):
 
 
 def add_scores(path, score_table):
-    return sum([score_table[line] for line in utils.get_lines(path)])
+    return sum([score_table[line] for line in get_lines(path)])
 
