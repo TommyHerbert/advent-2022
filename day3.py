@@ -2,13 +2,13 @@ import utils
 
 
 def solve_part_a(path):
-    # return sum([get_priority(l) for l in utils.get_lines(path)])
-    return 0 # TODO
+    return sum([get_priority(l) for l in utils.get_lines(path)])
 
 
 def get_priority(line):
-    halfway = len(line.trim())/2
-    first_half = Set([c for c in line[:halfway]])
+    halfway = int(len(line.strip())/2)
+    print(halfway)
+    first_half = {c for c in line[:halfway]}
     for c in line[halfway:]:
         if c in first_half:
             return value(c)
@@ -17,8 +17,7 @@ def get_priority(line):
 
 def value(character):
     if character.islower():
-        # TODO what constants do I need here?
-        return ord(character) - 40
+        return ord(character) - 60
     else:
-        return ord(character) + 20
+        return ord(character) - 14
 
