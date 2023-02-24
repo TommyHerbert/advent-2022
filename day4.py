@@ -6,7 +6,7 @@ def solve_part_a(path):
 
 
 def solve_part_b(path):
-    return 0 # TODO
+    return len([line for line in get_lines(path) if overlapping(line)])
 
 
 def fully_overlapping(line):
@@ -24,4 +24,9 @@ def parse(line):
     for range_string in range_strings:
         ranges.append(tuple([int(c) for c in range_string.split('-')]))
     return tuple(ranges)
+
+
+def overlapping(line):
+    ranges = parse(line)
+    return ranges[0][1] < ranges[1][0] or ranges[0][0] > ranges[1][1]
 
