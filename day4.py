@@ -5,6 +5,10 @@ def solve_part_a(path):
     return len([line for line in get_lines(path) if fully_overlapping(line)])
 
 
+def solve_part_b(path):
+    return 0 # TODO
+
+
 def fully_overlapping(line):
     ranges = parse(line)
     if ranges[0][0] == ranges[1][0]:
