@@ -28,5 +28,6 @@ def parse(line):
 
 def overlapping(line):
     ranges = parse(line)
-    return ranges[0][1] < ranges[1][0] or ranges[0][0] > ranges[1][1]
+    separate = ranges[0][1] < ranges[1][0] or ranges[0][0] > ranges[1][1]
+    return not separate
 
