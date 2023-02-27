@@ -26,6 +26,9 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(day4.solve_part_b('input/example4.txt'), 4)
         self.assertEqual(day4.solve_part_b('input/input4.txt'), 821)
 
+    def test_day_5(self):
+        self.assertEqual(day5.solve_part_a('input/example5.txt'), 'CMZ')
+
 
 if __name__ == '__main__':
     unittest.main()
