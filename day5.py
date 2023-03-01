@@ -11,7 +11,6 @@ class State:
             self.move(source, target)
     
     def move(self, source, target):
-        print('len(self.stacks): ', len(self.stacks))
         self.stacks[target].append(self.stacks[source][-1])
         self.stacks[source] = self.stacks[source][:-1]
 
@@ -25,7 +24,7 @@ class State:
             stack.reverse()
 
     def get_top_crates_string(self):
-        return ''.join([s[-1] for s in stacks])
+        return ''.join([s[-1] for s in self.stacks])
 
 
 def solve_part_a(path):
@@ -58,5 +57,7 @@ def parse_crates(line):
 
 def parse_instruction(line):
     tokens = line.split()
-    return [int(t) for t in [tokens[1], tokens[3], tokens[5]]]
+
+    # convert stack numbers to zero-based indexes 
+    return [int(tokens[1]), int(tokens[3]) - 1, int(tokens[5]) - 1]
 
