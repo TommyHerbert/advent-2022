@@ -34,6 +34,10 @@ def solve_part_a(path):
     return state.get_top_crates_string()
 
 
+def solve_part_b(path):
+    return ''
+
+
 def parse(data):
     state = State()
     instructions = []

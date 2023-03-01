@@ -28,6 +28,8 @@ class TestStringMethods(unittest.TestCase):
 
     def test_day_5(self):
         self.assertEqual(day5.solve_part_a('input/example5.txt'), 'CMZ')
+        self.assertEqual(day5.solve_part_a('input/input5.txt'), 'ZRLJGSCTR')
+        self.assertEqual(day5.solve_part_b('input/example5.txt'), 'MCD')
 
 
 if __name__ == '__main__':
