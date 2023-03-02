@@ -5,8 +5,10 @@ class State:
     def __init__(self):
         self.stacks = []
 
-    def apply(self, instruction):
+    def apply(self, instruction, all_at_once=False):
         number, source, target = instruction
+        if all_at_once:
+            self.stacks[target]
         for i in range(number):
             self.move_one(source, target)
     
