@@ -8,9 +8,9 @@ class State:
     def apply(self, instruction):
         number, source, target = instruction
         for i in range(number):
-            self.move(source, target)
+            self.move_one(source, target)
     
-    def move(self, source, target):
+    def move_one(self, source, target):
         self.stacks[target].append(self.stacks[source][-1])
         self.stacks[source] = self.stacks[source][:-1]
 
