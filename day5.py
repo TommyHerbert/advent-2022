@@ -5,12 +5,12 @@ class State:
     def __init__(self):
         self.stacks = []
 
-    def apply(self, instruction, all_at_once=False):
+    def apply(self, instruction, all_at_once):
         number, source, target = instruction
         if all_at_once:
             index = number * -1
             self.stacks[target] += self.stacks[source][index:]
-            self.stacks[source] = self.stacks[sourc][:index]
+            self.stacks[source] = self.stacks[source][:index]
         else:
             for i in range(number):
                 self.move_one(source, target)
@@ -33,14 +33,18 @@ class State:
 
 
 def solve_part_a(path):
-    state, instructions = parse(get_lines(path))
-    for instruction in instructions:
-        state.apply(instruction)
-    return state.get_top_crates_string()
+    return solve(path, all_at_once=False)
 
 
 def solve_part_b(path):
-    return ''
+    return solve(path, all_at_once=True)
+
+
+def solve(path, all_at_once):
+    state, instructions = parse(get_lines(path))
+    for instruction in instructions:
+        state.apply(instruction, all_at_once)
+    return state.get_top_crates_string()
 
 
 def parse(data):
