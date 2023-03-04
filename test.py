@@ -30,6 +30,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(day5.solve_part_a('input/example5.txt'), 'CMZ')
         self.assertEqual(day5.solve_part_a('input/input5.txt'), 'ZRLJGSCTR')
         self.assertEqual(day5.solve_part_b('input/example5.txt'), 'MCD')
+        self.assertEqual(day5.solve_part_b('input/input5.txt'), 'PRTTGRFPB')
 
 
 if __name__ == '__main__':
