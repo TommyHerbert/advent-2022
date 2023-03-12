@@ -33,11 +33,17 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(day5.solve_part_b('input/input5.txt'), 'PRTTGRFPB')
 
     def test_day_6(self):
+        self.assertEqual(day6.solve_part_a('mjqjpqmgbljsphdztnvjfqwrcgsmlb', 'string'), 7)
         self.assertEqual(day6.solve_part_a('bvwbjplbgvbhsrlpgdmjqwftvncz', 'string'), 5)
         self.assertEqual(day6.solve_part_a('nppdvjthqldpwncqszvftbrmjlhg', 'string'), 6)
         self.assertEqual(day6.solve_part_a('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg', 'string'), 10)
         self.assertEqual(day6.solve_part_a('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw', 'string'), 11)
         self.assertEqual(day6.solve_part_a('input/input6.txt', 'file'), 1757)
+        self.assertEqual(day6.solve_part_b('mjqjpqmgbljsphdztnvjfqwrcgsmlb', 'string'), 19)
+        self.assertEqual(day6.solve_part_b('bvwbjplbgvbhsrlpgdmjqwftvncz', 'string'), 23)
+        self.assertEqual(day6.solve_part_b('nppdvjthqldpwncqszvftbrmjlhg', 'string'), 23)
+        self.assertEqual(day6.solve_part_b('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg', 'string'), 29)
+        self.assertEqual(day6.solve_part_b('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw', 'string'), 26)
 
 
 if __name__ == '__main__':

@@ -12,6 +12,10 @@ def solve_part_a(data_source, data_type):
     return 0
 
 
+def solve_part_b(data_source, data_type):
+    return 0 # TODO
+
+
 def get_data(source, type):
     if type == 'file':
         with open(source) as data:
