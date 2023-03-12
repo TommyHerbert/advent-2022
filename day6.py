@@ -1,19 +1,23 @@
 def solve_part_a(data_source, data_type):
+    return solve(data_source, data_type, 4)
+
+
+def solve_part_b(data_source, data_type):
+    return solve(data_source, data_type, 14)
+
+
+def solve(data_source, data_type, search_length):
     data = get_data(data_source, data_type)
     start = 0
     end = 1
     while end <= len(data):
-        if end - start == 4:
+        if end - start == search_length:
             return end
         match = find_match(data[end], data[start:end])
         if match is not None:
             start += (match + 1)
         end += 1
     return 0
-
-
-def solve_part_b(data_source, data_type):
-    return 0 # TODO
 
 
 def get_data(source, type):
