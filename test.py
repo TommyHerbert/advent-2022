@@ -44,6 +44,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(day6.solve_part_b('nppdvjthqldpwncqszvftbrmjlhg', 'string'), 23)
         self.assertEqual(day6.solve_part_b('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg', 'string'), 29)
         self.assertEqual(day6.solve_part_b('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw', 'string'), 26)
+        self.assertEqual(day6.solve_part_b('input/input6.txt', 'file'), 2950)
 
 
 if __name__ == '__main__':
