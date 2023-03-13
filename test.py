@@ -1,4 +1,4 @@
-import unittest, day1, day2, day3, day4, day5, day6
+import unittest, day1, day2, day3, day4, day5, day6, day7
 
 
 class TestStringMethods(unittest.TestCase):
@@ -45,6 +45,9 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(day6.solve_part_b('nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg', 'string'), 29)
         self.assertEqual(day6.solve_part_b('zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw', 'string'), 26)
         self.assertEqual(day6.solve_part_b('input/input6.txt', 'file'), 2950)
+
+    def test_day_7(self):
+        self.assertEqual(day7.solve_part_a('input/example7.txt'), 95437)
 
 
 if __name__ == '__main__':
