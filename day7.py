@@ -6,7 +6,8 @@ def solve_part_a(input_file, cutoff):
     state = {'path':[], 'sizes':{}}
     for move in moves:
         update(state, move)
-    return [s for s in state['sizes'].values()].sum()
+    print('length ==', len(state['sizes']))
+    return sum([s for s in state['sizes'].values()])
 
 
 def get_moves(input_file):
