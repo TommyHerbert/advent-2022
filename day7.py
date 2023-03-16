@@ -6,7 +6,7 @@ def solve_part_a(input_file, cutoff):
     state = {'path':[], 'sizes':{}}
     for move in moves:
         update(state, move)
-    return sum([s for s in state['sizes'].values() if s < cutoff])
+    return sum([s for s in state['sizes'].values() if s <= cutoff])
 
 
 def get_moves(input_file):
