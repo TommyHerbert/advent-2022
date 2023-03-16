@@ -6,8 +6,7 @@ def solve_part_a(input_file, cutoff):
     state = {'path':[], 'sizes':{}}
     for move in moves:
         update(state, move)
-    print('length ==', len(state['sizes']))
-    return sum([s for s in state['sizes'].values()])
+    return sum([s for s in state['sizes'].values() if s < cutoff])
 
 
 def get_moves(input_file):
@@ -15,7 +14,7 @@ def get_moves(input_file):
     for line in get_lines(input_file):
         line = line.strip()
         if line[0] == '$':
-            moves.append((line.split(), []))
+            moves.append((line.split()[1:], []))
         else:
             moves[-1][1].append(line)
     return moves
@@ -45,7 +44,7 @@ def update_sizes(output, state):
             if name not in state['sizes']:
                 state['sizes'][name] = 0
         else:
-            size = tokens[0]
+            size = int(tokens[0])
             for directory in state['path']:
                 state['sizes'][directory] += size
 
