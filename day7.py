@@ -48,6 +48,7 @@ def update_sizes(output, state):
             for directory in state['path']:
                 state['sizes'][directory] += size
 
+
 def solve_part_b(data):
     return 0 # TODO
 
