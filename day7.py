@@ -9,6 +9,25 @@ def solve_part_a(input_file, cutoff):
     return sum([s for s in state['sizes'].values() if s <= cutoff])
 
 
+class Tree:
+    def __init__(self):
+        self.children = []
+        self.parent = None
+        self.size = 0
+
+    def __iter__(self):
+        self.iterator = self.generate()
+        return self
+    
+    def __next__(self):
+        return next(self.iterator)
+
+    def generate(self):
+        yield self
+        for child in self.children:
+            yield child
+
+
 def get_moves(input_file):
     moves = []
     for line in get_lines(input_file):
