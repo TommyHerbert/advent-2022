@@ -9,11 +9,20 @@ def solve_part_a(input_file, cutoff):
     return sum([s for s in state['sizes'].values() if s <= cutoff])
 
 
+def solve_part_a_tree(input_file, cutoff):
+    moves = get_moves(input_file)
+    tree = Tree('/')
+    for move in moves:
+        tree = update_tree(tree, move)
+    return sum([node.size for node in tree if node.size <= cutoff])
+
+
 class Tree:
-    def __init__(self):
-        self.children = []
-        self.parent = None
+    def __init__(self, name):
+        self.name = name
         self.size = 0
+        self.parent = None
+        self.children = []
 
     def __iter__(self):
         self.iterator = self.generate()
@@ -26,6 +35,33 @@ class Tree:
         yield self
         for child in self.children:
             yield child
+
+    def get_root(self):
+        if self.parent is None:
+            return self
+        return self.parent.get_root()
+
+    def add_child(self, name):
+        self.children.append(Tree(name))
+
+    def find_child(self, name):
+        for child in self.children:
+            if child.name = name:
+                return child
+        return None
+
+    def update_sizes(self, output):
+        local_total = 0
+        for line in output:
+            tokens = line.split()
+            name = tokens[1]
+            if tokens[0] == 'dir':
+                child = self.find_child(name)
+                if child is None:
+                    self.add_child(name)
+            else:
+                local_total += int(tokens[0])
+        self.increase(local_total)
 
 
 def get_moves(input_file):
@@ -47,12 +83,29 @@ def update(state, move):
         update_sizes(output, state)
 
 
+def update_tree(tree, move):
+    command, output = move
+    if command[0] == 'cd':
+        return change_node(tree, command[1])
+    else:
+        tree.update_sizes(output)
+        return tree
+
+
 def change_directory(path, directory):
     if directory == '/':
         return []
     if directory == '..':
         return path[:-1]
     return path + [directory]
+
+
+def change_node(tree, directory):
+    if directory == '/':
+        return tree.get_root()
+    if directory == '..':
+        return tree.parent
+    return tree.find_child(directory)
 
 
 def update_sizes(output, state):
