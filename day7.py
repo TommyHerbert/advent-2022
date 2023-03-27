@@ -17,6 +17,10 @@ def solve_part_a_tree(input_file, cutoff):
     return sum([node.size for node in tree if node.size <= cutoff])
 
 
+def solve_part_b(data):
+    return 0 # TODO
+
+
 class Tree:
     def __init__(self, name):
         self.name = name
@@ -42,11 +46,13 @@ class Tree:
         return self.parent.get_root()
 
     def add_child(self, name):
-        self.children.append(Tree(name))
+        child = Tree(name)
+        child.parent = self
+        self.children.append(child)
 
     def find_child(self, name):
         for child in self.children:
-            if child.name = name:
+            if child.name == name:
                 return child
         return None
 
@@ -62,6 +68,11 @@ class Tree:
             else:
                 local_total += int(tokens[0])
         self.increase(local_total)
+
+    def increase(self, size):
+        self.size += size
+        if self.parent is not None:
+            self.parent.increase(size)
 
 
 def get_moves(input_file):
@@ -121,6 +132,4 @@ def update_sizes(output, state):
                 state['sizes'][directory] += size
 
 
-def solve_part_b(data):
-    return 0 # TODO
 
