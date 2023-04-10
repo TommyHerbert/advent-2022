@@ -1,20 +1,12 @@
 from utils import get_lines
 
 
-def solve_part_a(input_file, cutoff):
-    moves = get_moves(input_file)
-    state = {'path':[], 'sizes':{}}
-    for move in moves:
-        update(state, move)
-    return sum([s for s in state['sizes'].values() if s <= cutoff])
-
-
 def solve_part_a_tree(input_file, cutoff):
     moves = get_moves(input_file)
     tree = Tree('/')
     for move in moves:
         tree = update_tree(tree, move)
-    return sum([node.size for node in tree if node.size <= cutoff])
+    return sum([node.size for node in tree.get_root() if node.size <= cutoff])
 
 
 def solve_part_b(data):
@@ -86,14 +78,6 @@ def get_moves(input_file):
     return moves
 
 
-def update(state, move):
-    command, output = move
-    if command[0] == 'cd':
-        state['path'] = change_directory(state['path'], command[1])
-    else:
-        update_sizes(output, state)
-
-
 def update_tree(tree, move):
     command, output = move
     if command[0] == 'cd':
@@ -103,33 +87,10 @@ def update_tree(tree, move):
         return tree
 
 
-def change_directory(path, directory):
-    if directory == '/':
-        return []
-    if directory == '..':
-        return path[:-1]
-    return path + [directory]
-
-
 def change_node(tree, directory):
     if directory == '/':
         return tree.get_root()
     if directory == '..':
         return tree.parent
     return tree.find_child(directory)
-
-
-def update_sizes(output, state):
-    for line in output:
-        tokens = line.split()
-        name = tokens[1]
-        if tokens[0] == 'dir':
-            if name not in state['sizes']:
-                state['sizes'][name] = 0
-        else:
-            size = int(tokens[0])
-            for directory in state['path']:
-                state['sizes'][directory] += size
-
-
 
