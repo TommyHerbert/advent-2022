@@ -1,7 +1,7 @@
 from utils import get_lines
 
 
-def solve_part_a_tree(input_file, cutoff):
+def solve_part_a(input_file, cutoff):
     moves = get_moves(input_file)
     tree = Tree('/')
     for move in moves:
