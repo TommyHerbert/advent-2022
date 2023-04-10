@@ -9,10 +9,6 @@ def solve_part_a(input_file, cutoff):
     return sum([node.size for node in tree.get_root() if node.size <= cutoff])
 
 
-def solve_part_b(data):
-    return 0 # TODO
-
-
 class Tree:
     def __init__(self, name):
         self.name = name
