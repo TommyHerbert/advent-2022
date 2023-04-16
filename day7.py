@@ -34,7 +34,8 @@ class Tree:
     def generate(self):
         yield self
         for child in self.children:
-            yield child
+            for node in child:
+                yield node
 
     def get_root(self):
         if self.parent is None:
