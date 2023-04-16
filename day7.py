@@ -6,14 +6,9 @@ from utils import get_lines
 def solve_part_a(input_file, cutoff):
     moves = get_moves(input_file)
     tree = Tree('/')
-    podolski = PodolskiStructure()
     for move in moves:
         tree = update_tree(tree, move)
-        podolski.update_state(move)
     tree_result = sum([node.size for node in tree.get_root() if node.size <= cutoff])
-    podolski_result = sum([v for v in podolski.directories.values() if v <= cutoff])
-    print('tree result:', tree_result)
-    print('podolski result:', podolski_result)
     return tree_result
 
 
@@ -70,31 +65,6 @@ class Tree:
         self.size += size
         if self.parent is not None:
             self.parent.increase(size)
-
-
-class PodolskiStructure:
-    def __init__(self):
-        self.current_path = '/home'
-        self.directories = {'/home': 0}
-
-    def update_state(self, move):
-        command, output = move
-        if command[0] == 'cd':
-            if command[1] == '..':
-                self.current_path = self.current_path[:self.current_path.rindex('/')]
-            elif command[1] == '/':
-                self.current_path = '/home'
-            else:
-                self.current_path += '/' + command[1]
-                self.directories[self.current_path] = 0
-        if command[0] == 'ls':
-            for line in output:
-                tokens = line.split()
-                if tokens[0] != 'dir':
-                    temp_path = self.current_path
-                    while temp_path != '':
-                        self.directories[temp_path] += int(tokens[0])
-                        temp_path = temp_path[:temp_path.rindex('/')]
 
 
 def get_moves(input_file):
