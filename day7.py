@@ -1,5 +1,3 @@
-# https://github.com/PodolskiBartosz/advent-of-code-2022/blob/main/day-7/main.py
-
 from utils import get_lines
 
 
@@ -93,4 +91,3 @@ def change_node(tree, directory):
     if directory == '..':
         return tree.parent
     return tree.find_child(directory)
-
