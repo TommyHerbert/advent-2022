@@ -13,9 +13,7 @@ def get_sizes(file):
     for line in get_lines(file):
         line = line.split()
         if line[0] == "$": # the line is a command
-            if line[1] == "ls":
-                pass
-            else:
+            if line[1] != "ls":
                 if line[2] == "..":
                     current_path = parent(current_path)
                 elif line[2] == "/":
