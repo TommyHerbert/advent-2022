@@ -1,93 +1,39 @@
+# with thanks to Bartosz Podolski
+
 from utils import get_lines
 
 
 def solve_part_a(input_file, cutoff):
-    moves = get_moves(input_file)
-    tree = Tree('/')
-    for move in moves:
-        tree = update_tree(tree, move)
-    tree_result = sum([node.size for node in tree.get_root() if node.size <= cutoff])
-    return tree_result
+    sizes = get_sizes(input_file)
+    sum_small_directories = 0
+    for _, size in sizes.items():
+        if size < cutoff:
+            sum_small_directories += size
+    return sum_small_directories
 
 
-class Tree:
-    def __init__(self, name):
-        self.name = name
-        self.size = 0
-        self.parent = None
-        self.children = []
-
-    def __iter__(self):
-        self.iterator = self.generate()
-        return self
-    
-    def __next__(self):
-        return next(self.iterator)
-
-    def generate(self):
-        yield self
-        for child in self.children:
-            for node in child:
-                yield node
-
-    def get_root(self):
-        if self.parent is None:
-            return self
-        return self.parent.get_root()
-
-    def add_child(self, name):
-        child = Tree(name)
-        child.parent = self
-        self.children.append(child)
-
-    def find_child(self, name):
-        for child in self.children:
-            if child.name == name:
-                return child
-        return None
-
-    def update_sizes(self, output):
-        local_total = 0
-        for line in output:
-            tokens = line.split()
-            name = tokens[1]
-            if tokens[0] == 'dir':
-                child = self.find_child(name)
-                if child is None:
-                    self.add_child(name)
+def get_sizes(file):
+    current_path = ""
+    directories = {"/home": 0}
+    for line in get_lines(file):
+        line = line.split()
+        if line[0] == "$":
+            if line[1] == "ls":
+                pass
             else:
-                local_total += int(tokens[0])
-        self.increase(local_total)
-
-    def increase(self, size):
-        self.size += size
-        if self.parent is not None:
-            self.parent.increase(size)
-
-
-def get_moves(input_file):
-    moves = []
-    for line in get_lines(input_file):
-        line = line.strip()
-        if line[0] == '$':
-            moves.append((line.split()[1:], []))
+                if line[2] == "..":
+                    # find index of last occurrence of "/" and keep everything to the left of it
+                    current_path = current_path[:current_path.rindex("/")]
+                elif line[2] == "/":
+                    current_path = "/home"
+                else:
+                    current_path = current_path + "/" + line[2]
+                    directories[current_path] = 0
         else:
-            moves[-1][1].append(line)
-    return moves
-
-
-def update_tree(tree, move):
-    command, output = move
-    if command[0] == 'cd':
-        return change_node(tree, command[1])
-    else:
-        tree.update_sizes(output)
-        return tree
-
-
-def change_node(tree, directory):
-    if directory == '/':
-        return tree.get_root()
-    if directory == '..':
-        return tree.parent
-    return tree.find_child(directory)
+            if line[0] != "dir":
+                temp_path = current_path
+                # update all parent directories
+                while temp_path != "":
+                    directories[temp_path] += int(line[0])
+                    temp_path = temp_path[:temp_path.rindex("/")]
+    return directories

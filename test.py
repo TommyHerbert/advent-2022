@@ -4,7 +4,7 @@ import day3
 import day4
 import day5
 import day6
-import day7_podolski
+import day7
 import unittest
 
 
@@ -54,7 +54,7 @@ class TestStringMethods(unittest.TestCase):
         self.assertEqual(2950, day6.solve_part_b('input/input6.txt', 'file'))
 
     def test_day_7(self):
-        self.assertEqual(1915606, day7_podolski.solve_part_a('input/input7.txt', 100000))
+        self.assertEqual(1915606, day7.solve_part_a('input/input7.txt', 100000))
 
 
 if __name__ == '__main__':
