@@ -13,7 +13,6 @@ def solve_part_a(input_file, cutoff):
 
 
 def get_sizes(file):
-    # Create a list of directories by judging the inputs
     current_path = ""
     directories = {"/home": 0}
     for line in get_lines(file):
@@ -23,7 +22,7 @@ def get_sizes(file):
                 pass
             else:
                 if line[2] == "..":
-                    # Find index of last occurrence of "/" and create new string up until that index
+                    # find index of last occurrence of "/" and keep everything to the left of it
                     current_path = current_path[:current_path.rindex("/")]
                 elif line[2] == "/":
                     current_path = "/home"
@@ -33,7 +32,7 @@ def get_sizes(file):
         else:
             if line[0] != "dir":
                 temp_path = current_path
-                # Update all parent directories
+                # update all parent directories
                 while temp_path != "":
                     directories[temp_path] += int(line[0])
                     temp_path = temp_path[:temp_path.rindex("/")]
