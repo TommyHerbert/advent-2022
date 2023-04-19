@@ -17,8 +17,7 @@ def get_sizes(file):
                 pass
             else:
                 if line[2] == "..":
-                    # find index of last occurrence of "/" and keep everything to the left of it
-                    current_path = current_path[:current_path.rindex("/")]
+                    current_path = parent(current_path)
                 elif line[2] == "/":
                     current_path = "/home"
                 else:
@@ -30,5 +29,10 @@ def get_sizes(file):
                 # update all parent directories
                 while temp_path != "":
                     directories[temp_path] += int(line[0])
-                    temp_path = temp_path[:temp_path.rindex("/")]
+                    temp_path = parent(temp_path)
     return directories.values()
+
+
+def parent(path):
+    # find index of last occurrence of "/" and keep everything to the left of it
+    return path[:path.rindex('/')]
