@@ -4,7 +4,7 @@ from utils import get_lines
 
 
 def solve_part_a(input_file, cutoff):
-    directories = get_file_system_directories(input_file)
+    directories = get_sizes(input_file)
     sum_small_directories = 0
     for _, directory in directories.items():
         if directory < cutoff:
@@ -12,7 +12,7 @@ def solve_part_a(input_file, cutoff):
     return sum_small_directories
 
 
-def get_file_system_directories(file):
+def get_sizes(file):
     # Create a list of directories by judging the inputs
     current_path = ""
     directories = {"/home": 0}
