@@ -4,12 +4,7 @@ from utils import get_lines
 
 
 def solve_part_a(input_file, cutoff):
-    sizes = get_sizes(input_file)
-    sum_small_directories = 0
-    for _, size in sizes.items():
-        if size < cutoff:
-            sum_small_directories += size
-    return sum_small_directories
+    return sum(s for s in get_sizes(input_file) if s <= cutoff)
 
 
 def get_sizes(file):
@@ -36,4 +31,4 @@ def get_sizes(file):
                 while temp_path != "":
                     directories[temp_path] += int(line[0])
                     temp_path = temp_path[:temp_path.rindex("/")]
-    return directories
+    return directories.values()
