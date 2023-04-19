@@ -12,7 +12,7 @@ def get_sizes(file):
     directories = {"/home": 0}
     for line in get_lines(file):
         line = line.split()
-        if line[0] == "$":
+        if line[0] == "$": # the line is a command
             if line[1] == "ls":
                 pass
             else:
@@ -24,7 +24,7 @@ def get_sizes(file):
                 else:
                     current_path = current_path + "/" + line[2]
                     directories[current_path] = 0
-        else:
+        else: # the line is output from a command
             if line[0] != "dir":
                 temp_path = current_path
                 # update all parent directories
