@@ -4,11 +4,11 @@ from utils import get_lines
 
 
 def solve_part_a(input_file, cutoff):
-    directories = get_sizes(input_file)
+    sizes = get_sizes(input_file)
     sum_small_directories = 0
-    for _, directory in directories.items():
-        if directory < cutoff:
-            sum_small_directories += directory
+    for _, size in sizes.items():
+        if size < cutoff:
+            sum_small_directories += size
     return sum_small_directories
 
 
