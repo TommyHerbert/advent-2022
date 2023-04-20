@@ -4,7 +4,7 @@ from utils import get_lines
 
 
 def solve_part_a(input_file, cutoff):
-    return sum(s for s in get_sizes(input_file) if s <= cutoff)
+    return sum(s for s in get_sizes(input_file).values() if s <= cutoff)
 
 
 def get_sizes(file):
@@ -28,7 +28,7 @@ def get_sizes(file):
                 while temp_path != "":
                     directories[temp_path] += int(line[0])
                     temp_path = parent(temp_path)
-    return directories.values()
+    return directories
 
 
 def parent(path):
