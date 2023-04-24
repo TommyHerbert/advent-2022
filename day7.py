@@ -10,7 +10,7 @@ def solve_part_a(input_file, cutoff):
 def solve_part_b(input_file, allowance):
     sizes = get_sizes(input_file)
     overspend = sizes['/home'] - allowance
-    return min([s for s in sizes.values() ])
+    return min([s for s in sizes.values() if s >= overspend])
 
 
 def get_sizes(file):
