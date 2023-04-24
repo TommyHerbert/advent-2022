@@ -7,6 +7,12 @@ def solve_part_a(input_file, cutoff):
     return sum(s for s in get_sizes(input_file).values() if s <= cutoff)
 
 
+def solve_part_b(input_file, allowance):
+    sizes = get_sizes(input_file)
+    overspend = sizes['/home'] - allowance
+    return min([s for s in sizes.values() ])
+
+
 def get_sizes(file):
     current_path = ""
     directories = {"/home": 0}
