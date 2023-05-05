@@ -48,11 +48,7 @@ def as_ints(strings):
 
 
 def initialise_visibility(trees):
-    visibility_map = []
-    for row in range(len(trees)):
-        visibility_map.append([0] * len(trees[row]))
-    return visibility_map
-
+    return [[0] * len(trees[row]) for row in range(len(trees))]
 
 def solve_part_b(data):
     return 0 # TODO
